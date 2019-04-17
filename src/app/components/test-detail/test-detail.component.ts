@@ -1,12 +1,15 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
 
 import axios from 'axios';
+import { FormControl, Validators } from "@angular/forms";
 
 export interface DialogData {
-    b: string
+    points: string
     result: string;
 }
+
+const {required} = Validators;
 
 @Component({
     selector: 'app-test-detail',
@@ -19,6 +22,10 @@ export class TestDetailComponent implements OnInit {
     answer3: string;
 
     mistakes: number = null;
+
+    firstName: string;
+    lastName: string;
+    class: string;
 
     constructor(public dialog: MatDialog) { }
 
@@ -52,16 +59,21 @@ export class TestDetailComponent implements OnInit {
 
         let formData = new FormData();
 
+
         formData.append("ans1", this.answer1);
         formData.append("ans2", this.answer2);
         formData.append("ans3", this.answer3);
+        formData.append("firstName", this.firstName);
+        formData.append("lastName", this.lastName);
+        formData.append("class", this.class);
 
-        axios.post("http://localhost:8081/test", formData)
+        axios.post("https://school-api-app.herokuapp.com/api/test/", formData)
             .then(response => {
                 const dialogRef = this.dialog.open(ExampleDialog, {
                     width: '250px',
-                    data: {b: response.data["data"], result: response.data["result"]}
+                    data: {points: response.data["points"], result: response.data["result"]}
                 });
+                console.log(response)
             })
             .catch(error => console.log(error));
     }

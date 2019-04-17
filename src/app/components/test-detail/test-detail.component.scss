@@ -3,6 +3,11 @@
     width: 500px;
     padding-left: 65px;
 
+    .fields {
+        display: flex;
+        flex-direction: column;
+    }
+
     .question {
         font-size: 1.1em;
     }

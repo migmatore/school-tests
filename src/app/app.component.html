@@ -1,10 +1,11 @@
 <div class="header" >
     <nav class="navbar-container">
         <div class="links-container">
-            <a href="#" class="link main">Home</a>
-            <a href="#" class="link">tests</a>
+            <a routerLink="/" routerLinkActive="active" class="link main">Home</a>
+            <a routerLink="/tests" routerLinkActive="active" class="link">tests</a>
+            <a routerLink="/users" routerLinkActive="active" class="link">users</a>
         </div>
     </nav>
 </div>
 
-<app-test-detail></app-test-detail>
+<router-outlet></router-outlet>

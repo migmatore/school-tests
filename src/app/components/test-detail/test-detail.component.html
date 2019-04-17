@@ -1,4 +1,21 @@
 <div class="content">
+    <div class="fields">
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="first name" [(ngModel)]="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="last name" [(ngModel)]="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Class</mat-label>
+            <input matInput placeholder="class" [(ngModel)]="class">
+        </mat-form-field>
+    </div>
+
     <h4>Test1:</h4>
 
     <p class="question">В какую эпоху складчатости образовались уральские горы:</p>
@@ -10,7 +27,7 @@
 
     <p class="question">Самый высокий вулкан на территории России:</p>
     <mat-radio-group [(ngModel)]="answer2">
-        <mat-radio-button value="1" class="answer">Мутоновская сопка</mat-radio-button>
+        <mat-radio-button value="1" class="answer">Мутновская сопка</mat-radio-button>
         <mat-radio-button value="2" class="answer">Корякская сопка</mat-radio-button>
         <mat-radio-button value="3" class="answer">Ключевая сопка</mat-radio-button>
     </mat-radio-group>
