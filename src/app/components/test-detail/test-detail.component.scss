@@ -24,5 +24,14 @@
 
     .check-btn {
         margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .content {
+        width: 99%;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 }

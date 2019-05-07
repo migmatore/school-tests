@@ -1,54 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { ExampleDialog, TestDetailComponent } from './components/test-detail/test-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule, MatInputModule,
+    MatFormFieldModule, MatIconModule, MatInputModule,
     MatRadioModule,
     MatTableModule
 } from '@angular/material';
-import { RouterModule, Routes } from "@angular/router";
+
+import { JwtModule } from "@auth0/angular-jwt";
+
+import { AppComponent } from './app.component';
+import { ExampleDialog, TestDetailComponent } from './components/test-detail/test-detail.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
-
-
-const routes: Routes = [
-    {
-        path: '',
-        component: AppComponent,
-    },
-    {
-        path: 'tests',
-        component: TestDetailComponent,
-    },
-    {
-        path: 'users',
-        component: UsersListComponent,
-    }
-];
+import { TestCardComponent } from './components/test-card/test-card.component';
+import { TestsListComponent } from './components/tests-list/tests-list.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { InformationComponent } from './components/information/information.component';
+import { CategoryComponent } from './components/information/category/category.component';
 
 @NgModule({
-      declarations: [
-          AppComponent,
-          TestDetailComponent,
-          ExampleDialog,
-          UsersListComponent
-      ],
-      entryComponents: [
-          ExampleDialog
-      ],
+    declarations: [
+        AppComponent,
+        TestDetailComponent,
+        ExampleDialog,
+        UsersListComponent,
+        TestCardComponent,
+        TestsListComponent,
+        HeaderComponent,
+        LoginComponent,
+        ProfileComponent,
+        InformationComponent,
+        CategoryComponent,
+    ],
+    entryComponents: [
+        ExampleDialog,
+        CategoryComponent
+    ],
     imports: [
-        RouterModule.forRoot(
-            routes,
-            {enableTracing: true} // <-- debugging purposes only
-        ),
         BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
 
         MatRadioModule,
         MatButtonModule,
@@ -56,9 +55,21 @@ const routes: Routes = [
         MatTableModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule
+        MatIconModule,
+
+        AppRoutingModule,
+
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: () => {
+                    return localStorage.getItem('auth_token');
+                },
+                whitelistedDomains: ['127.0.0.1:8000'],
+                blacklistedRoutes: ['']
+            }
+        })
     ],
-      providers: [],
-      bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

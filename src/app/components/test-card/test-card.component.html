@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+        <h3>{{ cardTitle }}</h3>
+    </div>
+    <div class="mini-body" *ngIf="miniBody">
+        <hr>
+        <div class="card-mini-body">{{ cardMiniBody }}</div>
+    </div>
+    <div class="body" *ngIf="body">
+        <hr>
+        <div class="card-body">{{ cardBody }}</div>
+    </div>
+    <div class="tags" *ngIf="tags">
+        <div class="card-tags">{{ cardTags }}</div>
+        <hr>
+    </div>
+    <div class="card-author">{{ cardAuthor }}</div>
+    <div class="card-add-date">{{ cardAddDate }}</div>
+</div>
